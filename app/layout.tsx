@@ -7,12 +7,13 @@ import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 
 const name = 'Max Schrementi';
-export default function RootLayout({ children, Page}) {
+export default function RootLayout({ children}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
     <div className={styles.container}>
       <header className={styles.header}>
-        {Page ? (
           <>
             <Image
               priority
@@ -24,25 +25,6 @@ export default function RootLayout({ children, Page}) {
             />
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
           </>
-        ) : (
-          <>
-            <Link href="/">
-              <Image
-                priority
-                src="/images/profile.jpg"
-                className={utilStyles.borderCircle}
-                height={108}
-                width={108}
-                alt=""
-              />
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/" className={utilStyles.colorInherit}>
-                {name}
-              </Link>
-            </h2>
-          </>
-        )}
       </header>
       <main>{children}</main>
     </div>
