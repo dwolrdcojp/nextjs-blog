@@ -1,16 +1,17 @@
-import { getAllPostIds, getPostData } from '../../../lib/posts';
 import utilStyles from '../../../styles/utils.module.css';
 import Date from '../../../components/date';
 import Link from 'next/link';
+import { getPostIds, getPostData } from '../../../firebase';
 
 export const dynamicsParams = true;
 
 export async function generateStaticParams() {
-  const res = await getAllPostIds();
-  return res;
+  const posts = await getPostIds();
+  return posts;
+  
 }
 
-async function getPost(params) {
+export async function getPost(params) {
   const res = getPostData(params.id);
   return res;
 }
@@ -23,9 +24,8 @@ export default async function Post({ params }) {
       <article>
         <h1 className={utilStyles.headingXl}>{post.title}</h1>
         <div className={utilStyles.lightText}>
-          <Date dateString={post.date} />
+          <p>{post.content}</p>
         </div>
-        <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
       </article>
       <Link className={utilStyles.headingMd} href={`/`}>Back to home</Link>
     </>

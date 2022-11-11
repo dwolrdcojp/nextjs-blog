@@ -5,8 +5,9 @@ module.exports = {
 
   webpack5: true,
   webpack: (config) => {
-    config.resolve.fallback = { fs: false };
-
+    config.experiments = config.experiments || {}
+    config.experiments.topLevelAwait = true
+    config.resolve.fallback = { fs: false }
     return config;
   },
 };

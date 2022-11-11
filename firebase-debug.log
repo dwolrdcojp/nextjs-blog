@@ -1,0 +1,42 @@
+[debug] [2022-11-11T15:28:34.090Z] ----------------------------------------------------------------------
+[debug] [2022-11-11T15:28:34.091Z] Command:       /usr/local/bin/firebase /Users/max/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2022-11-11T15:28:34.091Z] CLI Version:   11.16.0
+[debug] [2022-11-11T15:28:34.091Z] Platform:      darwin
+[debug] [2022-11-11T15:28:34.091Z] Node Version:  v16.16.0
+[debug] [2022-11-11T15:28:34.092Z] Time:          Fri Nov 11 2022 10:28:34 GMT-0500 (Eastern Standard Time)
+[debug] [2022-11-11T15:28:34.093Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-11-11T15:28:34.181Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-11-11T15:28:34.182Z] > authorizing via signed-in user (dwolrdcojp@gmail.com)
+[debug] [2022-11-11T15:28:34.182Z] [iam] checking project nextjs-13-blog for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-11-11T15:28:34.184Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/nextjs-13-blog:testIamPermissions [none]
+[debug] [2022-11-11T15:28:34.185Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/nextjs-13-blog:testIamPermissions x-goog-quota-user=projects/nextjs-13-blog
+[debug] [2022-11-11T15:28:34.185Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/nextjs-13-blog:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-11-11T15:28:34.406Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/nextjs-13-blog:testIamPermissions 200
+[debug] [2022-11-11T15:28:34.409Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/nextjs-13-blog:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-11-11T15:28:34.410Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/nextjs-13-blog [none]
+[debug] [2022-11-11T15:28:34.674Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/nextjs-13-blog 200
+[debug] [2022-11-11T15:28:34.676Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/nextjs-13-blog {"projectId":"nextjs-13-blog","projectNumber":"744967775328","displayName":"NextJS 13 Blog","name":"projects/nextjs-13-blog","resources":{"hostingSite":"nextjs-13-blog"},"state":"ACTIVE","etag":"1_c7440e8f-87ec-4633-a34f-65da5d556b0f"}
+[debug] [2022-11-11T15:28:37.393Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/nextjs-13-blog/sites pageToken=&pageSize=10
+[debug] [2022-11-11T15:28:38.049Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/nextjs-13-blog/sites 200
+[debug] [2022-11-11T15:28:38.053Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/nextjs-13-blog/sites {"sites":[{"name":"projects/nextjs-13-blog/sites/nextjs-13-blog","defaultUrl":"https://nextjs-13-blog.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2022-11-11T15:28:38.054Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/nextjs-13-blog/sites 
+[debug] [2022-11-11T15:28:38.426Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/nextjs-13-blog/sites 200
+[debug] [2022-11-11T15:28:38.428Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/nextjs-13-blog/sites {"sites":[{"name":"projects/nextjs-13-blog/sites/nextjs-13-blog","defaultUrl":"https://nextjs-13-blog.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2022-11-11T15:28:38.429Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/nextjs-13-blog/webApps/-/config [none]
+[debug] [2022-11-11T15:28:38.689Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/nextjs-13-blog/webApps/-/config 200
+[debug] [2022-11-11T15:28:38.690Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/nextjs-13-blog/webApps/-/config {"projectId":"nextjs-13-blog","storageBucket":"nextjs-13-blog.appspot.com","apiKey":"AIzaSyBb7HcYu_2-Y-q3hcN25r8HGfrCgEPcFT8","authDomain":"nextjs-13-blog.firebaseapp.com","messagingSenderId":"744967775328"}
+[debug] [2022-11-11T15:29:07.877Z] Error: The package "esbuild-darwin-64" could not be found, and is needed by esbuild.
+
+If you are installing esbuild with npm, make sure that you don't specify the
+"--no-optional" flag. The "optionalDependencies" package.json feature is used
+by esbuild to install the correct binary executable for your current platform.
+    at generateBinPath (/Users/max/.cache/firebase/tools/lib/node_modules/firebase-tools/node_modules/esbuild/lib/main.js:1786:15)
+    at esbuildCommandAndArgs (/Users/max/.cache/firebase/tools/lib/node_modules/firebase-tools/node_modules/esbuild/lib/main.js:1850:33)
+    at ensureServiceIsRunning (/Users/max/.cache/firebase/tools/lib/node_modules/firebase-tools/node_modules/esbuild/lib/main.js:2015:25)
+    at Object.build (/Users/max/.cache/firebase/tools/lib/node_modules/firebase-tools/node_modules/esbuild/lib/main.js:1906:26)
+    at ɵcodegenFunctionsDirectory (/Users/max/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/next/index.js:190:23)
+    at async prepareFrameworks (/Users/max/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/index.js:302:84)
+    at async deploy (/Users/max/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/deploy/index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.
