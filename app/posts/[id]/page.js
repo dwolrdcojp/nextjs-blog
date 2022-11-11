@@ -3,7 +3,7 @@ import Date from '../../../components/date';
 import Link from 'next/link';
 import { getPostIds, getPostData } from '../../../firebase';
 
-export const dynamicsParams = true;
+const dynamicsParams = true;
 
 export async function generateStaticParams() {
   const posts = await getPostIds();
@@ -11,7 +11,7 @@ export async function generateStaticParams() {
   
 }
 
-export async function getPost(params) {
+async function getPost(params) {
   const res = getPostData(params.id);
   return res;
 }
