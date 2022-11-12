@@ -1,13 +1,8 @@
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   experimental: {
     appDir: true,
   },
-
-  webpack5: true,
-  webpack: (config) => {
-    config.experiments = config.experiments || {}
-    config.experiments.topLevelAwait = true
-    config.resolve.fallback = { fs: false }
-    return config;
-  },
 };
+
+module.exports = nextConfig;
