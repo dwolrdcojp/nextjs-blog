@@ -8,7 +8,6 @@ const dynamicsParams = true;
 export async function generateStaticParams() {
   const posts = await getPostIds();
   return posts;
-  
 }
 
 async function getPost(params) {

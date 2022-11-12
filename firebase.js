@@ -49,7 +49,7 @@ export async function getPostData(id) {
 }
 
 // Add a post 
-async function addPost() {
+export async function addPost() {
   try {
     const docRef = await addDoc(collection(firestore, "1"), {
       title: 'my latest and greatest',
