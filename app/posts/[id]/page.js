@@ -26,7 +26,6 @@ export default async function Post({ params }) {
           <p>{post.content}</p>
         </div>
       </article>
-      <Link className={utilStyles.headingMd} href={`/`}>Back to home</Link>
     </>
 
   );

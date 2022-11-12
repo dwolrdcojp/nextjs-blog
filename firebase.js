@@ -49,11 +49,11 @@ export async function getPostData(id) {
 }
 
 // Add a post 
-export async function addPost() {
+export async function addPost(title, content) {
   try {
     const docRef = await addDoc(collection(firestore, "1"), {
-      title: 'my latest and greatest',
-      content: 'Check out the content of my latest and greatest blog post!'
+      title: title,
+      content: content,
     });
     console.log("Document written with ID: ", docRef.id);
   } catch (e) {
