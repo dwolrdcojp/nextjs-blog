@@ -1,5 +1,3 @@
-import Counter from '../addpost';
-
 // import your client component
 import utilStyles from '../../styles/utils.module.css';
 import Link from 'next/link';
@@ -12,7 +10,7 @@ export default function Page() {
 
   return (
     <div>
-      <Counter />
+      <h1>Add a new post...</h1>
     </div>
   );
 }
