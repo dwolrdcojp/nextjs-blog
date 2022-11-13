@@ -1,7 +1,8 @@
 import utilStyles from '../../../styles/utils.module.css';
-import Date from '../../../components/date';
 import Link from 'next/link';
 import { getPostIds, getPostData } from '../../../firebase';
+import { remark } from 'remark';
+import html from 'remark-html';
 
 const dynamicsParams = true;
 
@@ -15,16 +16,25 @@ async function getPost(params) {
   return res;
 }
 
+// Use remark to convert markdown into HTML string 
+
 export default async function Post({ params }) {
   const post = await getPost(params);
+  const processedContent = await remark()
+    .use(html)
+    .process(post.content);
+  const contentHtml = processedContent.toString();
   
+  const date = post.date.toDate().toLocaleDateString();
+
   return (
     <>
       <article>
         <h1 className={utilStyles.headingXl}>{post.title}</h1>
         <div className={utilStyles.lightText}>
-          <p>{post.content}</p>
+          <p>{date}</p>
         </div>
+        <div dangerouslySetInnerHTML={{ __html: contentHtml }}/>
       </article>
     </>
 

@@ -1,5 +1,5 @@
 // import your client component
-import Counter from './Counter';
+import NewPost from './NewPost';
 import utilStyles from '../../styles/utils.module.css';
 import Link from 'next/link';
 import Date from '../../components/date';
@@ -10,7 +10,7 @@ export default async function Page() {
 
   return (
     <div>
-      <Counter />
+      <NewPost />
     </div>
   );
 }

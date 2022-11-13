@@ -2,7 +2,6 @@
 
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
-import Date from '../components/date';
 
 // This is a client component. It receives data as props and 
 // has access to state and effects just like Page components 
@@ -17,12 +16,12 @@ export default function HomePage({ recentPosts }) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {recentPosts.map(({ id, title, content }) => (
+          {recentPosts.map(({ id, title, date }) => (
             <li className={utilStyles.listItem} key={title}>
               <Link href={`/posts/${id}`} legacyBehavior>{title}</Link>
               <br />
               <small className={utilStyles.lightText}>
-                <p>{content}</p>
+                <p>{date}</p>
               </small>
             </li>
           ))}

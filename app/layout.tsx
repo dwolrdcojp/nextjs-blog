@@ -25,9 +25,6 @@ export default function RootLayout({ children }) {
           </>
         </header>
         {children}
-        <div className={styles.backToHome}>
-          <Link href="/">← Back to home</Link>
-        </div>
       </div>
       </body>
     </html>
