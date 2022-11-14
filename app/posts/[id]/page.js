@@ -1,5 +1,5 @@
-import utilStyles from '../../../styles/utils.module.css';
 import Link from 'next/link';
+import Content from './Content';
 import { getPostIds, getPostData } from '../../../firebase';
 import { remark } from 'remark';
 import html from 'remark-html';
@@ -29,13 +29,7 @@ export default async function Post({ params }) {
 
   return (
     <>
-      <article>
-        <h1 className={utilStyles.headingXl}>{post.title}</h1>
-        <div className={utilStyles.lightText}>
-          <p>{date}</p>
-        </div>
-        <div dangerouslySetInnerHTML={{ __html: contentHtml }}/>
-      </article>
+      <Content title={post.title} date={date} content={contentHtml} />
     </>
 
   );

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styles from '../../components/layout.module.css';
+import '../../styles/a11y-dark.css';
 
 export default function PostLayout({ children }: {
 children: React.ReactNode
