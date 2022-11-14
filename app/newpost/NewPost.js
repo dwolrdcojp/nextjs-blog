@@ -4,21 +4,19 @@ import { addPost } from '../../firebase';
 // has access to state and effects just like Page components 
 // in the 'pages' directory. 
 
-async function addNewPost(title, date, content) {
-  const addNewPost = await addPost(title, date, content);
+async function addNewPost(title, content) {
+  const addNewPost = await addPost(title, content);
 }
 
 export default function NewPost() {
   const [title, setTitle] = useState('');
-  const [date, setDate] = useState('');
   const [content, setContent] = useState('');
   const [isPublished, setIsPublished] = useState(false);
 
   function handleClick(e) {
     e.preventDefault();
-    addNewPost(title, date, content);
+    addNewPost(title, content);
     setTitle('');
-    setDate('');
     setContent('');
     setIsPublished(true);
   }
@@ -29,10 +27,6 @@ export default function NewPost() {
       Title:
       <input value={title}
              onChange={(e) => setTitle(e.target.value)}></input>
-      <br />
-      Date:
-      <input type="date" value={date}
-             onChange={(e) => setDate(e.target.value)}></input>
       <br />
       Content:
       <textarea style={{whiteSpace: 'pre-wrap'}} value={content}
@@ -46,7 +40,6 @@ export default function NewPost() {
 
       <h1> Preview Post: </h1>
       <h2> {title} </h2>
-      <p> {date} </p>
       <p> {content} </p>
     </div>
   );

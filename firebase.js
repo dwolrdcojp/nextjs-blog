@@ -1,6 +1,19 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from "firebase/firestore";
-import { Timestamp, doc, getDoc, collection, getDocs, addDoc, query, orderBy } from "firebase/firestore";
+import { 
+  Timestamp, 
+  doc, 
+  getDoc, 
+  collection, 
+  getDocs, 
+  addDoc, 
+  query, 
+  orderBy, 
+  setDoc, 
+  limit, 
+  startAfter,
+  startAt
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -22,14 +35,15 @@ export async function getPosts() {
   const blogRef = collection(firestore, "1");
   const q = query(blogRef, orderBy("date", "desc"));
   const querySnapshot = await getDocs(q);
+
   const allDocs = querySnapshot.docs;
+
   const allPosts = allDocs.map((doc) => (
     { 
       id: doc.id, 
       title: doc.data().title, 
       date: doc.data().date.toDate().toLocaleDateString(),
     }));
-
   
   console.log(allPosts);
 
@@ -54,11 +68,13 @@ export async function getPostData(id) {
 }
 
 // Add a post 
-export async function addPost(title, date, content) {
+export async function addPost(title, content) {
+  const randNum = Math.floor(Math.random() * 100);
+  const titleId = randNum + "-" + title;
   try {
-    const docRef = await addDoc(collection(firestore, "1"), {
+    const docRef = await setDoc(doc(firestore, "1", titleId), {
       title: title,
-      date: Timestamp.fromDate(new Date(date)),
+      date: Timestamp.now(),
       content: content,
     });
     console.log("Document written with ID: ", docRef.id);

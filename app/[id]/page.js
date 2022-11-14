@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Content from './Content';
-import { getPostIds, getPostData } from '../../../firebase';
+import { getPostIds, getPostData } from '../../firebase';
 import { remark } from 'remark';
 import html from 'remark-html';
 

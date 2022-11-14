@@ -1,7 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 
-import utilStyles from '../../../styles/utils.module.css';
+import utilStyles from '../../styles/utils.module.css';
 import hljs from 'highlight.js';
 
 export default  function Post({ title, date, content }) {
