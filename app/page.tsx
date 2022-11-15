@@ -12,8 +12,8 @@ type Props = {
 };
 
 async function getRecentPosts(page) {
-    const pageNum = page ? page : 1;
-  const recentPosts = await fetch(`https://nextjs-blog-one-rose-20.vercel.app/pages/api/posts?page=${pageNum}`);
+  const pageNum = page ? page : 1;
+  const recentPosts = await fetch(`https://nextjs-blog-one-rose-20.vercel.app/api/posts?page=${pageNum}`);
 
   if (!recentPosts.ok) {
     throw new Error('Failed to fetch data');
