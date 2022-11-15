@@ -1,6 +1,7 @@
 // import your client component
 import HomePage from './HomePage';
 // v9 compat packages are API compatible with v8 code
+// comment
 
 type Props = {
   params?: {
