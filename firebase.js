@@ -31,14 +31,22 @@ export const app = initializeApp(firebaseConfig);
 export const firestore = getFirestore(app);
 
 // Get posts
-export async function getPosts() {
+export async function getPosts(page) {
   const blogRef = collection(firestore, "1");
   const q = query(blogRef, orderBy("date", "desc"));
   const querySnapshot = await getDocs(q);
 
+  const lastVisible = querySnapshot.docs[(page - 1) * 5];
+  const next = query(blogRef, 
+               orderBy("date", "desc"), 
+               startAt(lastVisible), 
+               limit(5));
+  const nextSnapshot = await getDocs(next);
+  const nextDocs = nextSnapshot.docs;
+
   const allDocs = querySnapshot.docs;
 
-  const allPosts = allDocs.map((doc) => (
+  const allPosts = nextDocs.map((doc) => (
     { 
       id: doc.id, 
       title: doc.data().title, 

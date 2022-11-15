@@ -7,18 +7,17 @@ import { useState } from 'react';
 // has access to state and effects just like Page components 
 // in the 'pages' directory. 
 
-export default function HomePage({ recentPosts }) {
-  const [ pageIndex, setPageIndex ] = useState(1);
+export default function HomePage({ searchParams, recentPosts }) {
+  const [pageIndex, setPageIndex] = useState(1);
 
-  function handlePrevious() {
-    setPageIndex(pageIndex - 1)
-  }
+  const posts = recentPosts.result;
+  const postsLength = posts.length;
 
-  function handleNext() {
-    setPageIndex(pageIndex + 1)
-  }
-
-  const posts = recentPosts.slice((pageIndex - 1) * 5, (pageIndex) * 5);
+  const pageNums = postsLength / 5;
+  const nextVisible = postsLength < 5 ? false : true;
+  const nextPage = searchParams.page ? (searchParams.page * 1) + 1 : 2;
+  const prevPage = (searchParams.page * 1) - 1;
+  console.log(nextVisible);
 
   return (
     <div>
@@ -38,12 +37,18 @@ export default function HomePage({ recentPosts }) {
             </li>
           ))}
         </ul>
-        <h3>Page: {pageIndex}</h3>
-        <button onClick={handlePrevious}>Previous</button>
-        <button onClick={handleNext}>Next</button>
+        <br />
+        Page {pageIndex} 
+        <br />
+        {(pageIndex < 2) ? " ← Previous " : (pageIndex > 1) &&
+        <Link href={`/?page=${pageIndex - 1}`}
+              onClick={() => setPageIndex(pageIndex -1)}>← Previous </Link>}
+        {!nextVisible ? " Next →" : nextVisible &&
+        <Link href={`/?page=${pageIndex + 1}`}
+              onClick={() => setPageIndex(pageIndex + 1)}> Next →</Link>}
         <br />
         <br />
-        <Link href={`/newpost/`} legacyBehavior>New Post</Link>
+        <Link href={`/newpost/`} >New Post</Link>
       </section>
     </div>
   );

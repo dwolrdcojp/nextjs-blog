@@ -14,14 +14,16 @@ export default function RootLayout({ children }) {
       <div className={styles.container}>
         <header className={styles.header}>
           <>
-            <Image
-              priority
-              src="/images/profile.jpg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt=""
-            />
+            <Link href="/">
+              <Image
+                priority
+                src="/images/profile.jpg"
+                className={utilStyles.borderCircle}
+                height={144}
+                width={144}
+                alt=""
+              />
+            </Link>
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
           </>
         </header>

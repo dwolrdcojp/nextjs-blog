@@ -1,23 +1,28 @@
-import Wrapper from './Wrapper';
 // import your client component
 import HomePage from './HomePage';
 // v9 compat packages are API compatible with v8 code
-import { getPosts } from '../firebase';
 
-export const revalidate = 0; 
 
-async function getRecentPosts() {
-  const recentPosts = await getPosts();
-  return recentPosts;
+async function getRecentPosts(page) {
+  
+  const pageNum = page ? page : 1;
+  const recentPosts = await fetch(`http://localhost:3000/api/posts?page=${pageNum}`);
+
+  if (!recentPosts.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return recentPosts.json();
 }
 
-export default async function Page() {
+export default async function Page({ searchParams }) {
   // Fetch data directly in a server component 
-  const recentPosts = await getRecentPosts();
+  const recentPosts = await getRecentPosts(searchParams.page);
   // Forward fetched data to your Client Component
   return (
     <>
-      <HomePage recentPosts={recentPosts} />
+      <HomePage searchParams={searchParams} 
+                recentPosts={recentPosts} />
     </>
   );
 
