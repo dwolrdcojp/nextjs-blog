@@ -7,7 +7,7 @@ type Props = {
     num?: string;
   };
   searchParams?: {
-    search?: string;
+    page?: string;
   };
 };
 
