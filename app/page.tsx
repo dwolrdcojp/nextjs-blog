@@ -15,9 +15,7 @@ async function getRecentPosts(page) {
   return recentPosts.json();
 }
 
-export default async function Page({ searchParams }: {
-  searchParams: { page: string },
-}) {
+export default async function Page({ searchParams }) {
   // Fetch data directly in a server component 
   const recentPosts = await getRecentPosts(searchParams.page);
   // Forward fetched data to your Client Component
