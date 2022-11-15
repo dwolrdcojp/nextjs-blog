@@ -14,7 +14,7 @@ type Props = {
 async function getRecentPosts(page) {
   
   const pageNum = page ? page : 1;
-  const recentPosts = await fetch(`http://localhost:3000/api/posts?page=${pageNum}`);
+  const recentPosts = await fetch(`/api/posts?page=${pageNum}`);
 
   if (!recentPosts.ok) {
     throw new Error('Failed to fetch data');
