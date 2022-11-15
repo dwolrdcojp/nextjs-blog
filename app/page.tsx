@@ -2,6 +2,14 @@
 import HomePage from './HomePage';
 // v9 compat packages are API compatible with v8 code
 
+type Props = {
+  params?: {
+    num?: string;
+  };
+  searchParams?: {
+    search?: string;
+  };
+};
 
 async function getRecentPosts(page) {
   
@@ -15,13 +23,13 @@ async function getRecentPosts(page) {
   return recentPosts.json();
 }
 
-export default async function Page({ searchParams }) {
+export default async function Page(props: Props) {
   // Fetch data directly in a server component 
-  const recentPosts = await getRecentPosts(searchParams.page);
+  const recentPosts = await getRecentPosts(props.searchParams.page);
   // Forward fetched data to your Client Component
   return (
     <>
-      <HomePage searchParams={searchParams} 
+      <HomePage searchParams={props.searchParams} 
                 recentPosts={recentPosts} />
     </>
   );
