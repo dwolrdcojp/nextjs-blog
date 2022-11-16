@@ -60,3 +60,15 @@
   font-size: 16px;
   padding: 5px 10px;
 }
+
+.posts {
+  height: 500px;
+}
+
+.search {
+  width: 255px;
+  color: black;
+  font-size: 16px;
+  border-radius: 4px;
+  padding: 5px;
+}
