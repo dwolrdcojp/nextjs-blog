@@ -14,7 +14,7 @@ type Props = {
 
 async function getRecentPosts(page) {
   const pageNum = page ? page : 1;
-  const recentPosts = await fetch(`https://nextjs-blog-dwolrdcojp.vercel.app/api/posts`);
+  const recentPosts = await fetch(process.env.NEXT_PUBLIC_VERCEL_URL + `/api/posts`);
 
   if (!recentPosts.ok) {
     throw new Error('Failed to fetch data');
