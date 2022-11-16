@@ -1,5 +1,6 @@
 // import your client component
 import HomePage from './HomePage';
+import { getPosts } from '../firebase';
 // v9 compat packages are API compatible with v8 code
 // comment
 
@@ -14,13 +15,9 @@ type Props = {
 
 async function getRecentPosts(page) {
   const pageNum = page ? page : 1;
-  const recentPosts = await fetch(`https://nextjs-blog-m3oww66ja-dwolrdcojp.vercel.app/api/posts`);
+  const recentPosts = await getPosts(pageNum);
 
-  if (!recentPosts.ok) {
-    throw new Error('Failed to fetch data');
-  }
-
-  return recentPosts.json();
+  return recentPosts;
 }
 
 export default async function Page(props: Props) {

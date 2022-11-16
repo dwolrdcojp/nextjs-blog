@@ -10,7 +10,7 @@ import { useState } from 'react';
 export default function HomePage({ searchParams, recentPosts }) {
   const [pageIndex, setPageIndex] = useState(1);
 
-  const posts = recentPosts.result;
+  const posts = recentPosts;
   const postsLength = posts.length;
 
   const pageNums = postsLength / 5;
