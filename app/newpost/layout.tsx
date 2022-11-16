@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from '../../components/layout.module.css';
+import styles from '../../styles/layout.module.css';
 
 export default function NewPostLayout({ children }: {
 children: React.ReactNode

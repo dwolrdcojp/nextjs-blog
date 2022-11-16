@@ -1,10 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../components/layout.module.css';
+import styles from '../styles/layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import '../styles/global.css';
-import hljs from 'highlight.js';
-import Script from 'next/script';
 
 const name = 'Max Schrementi';
 export default function RootLayout({ children }) {

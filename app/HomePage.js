@@ -7,17 +7,15 @@ import { useState } from 'react';
 // has access to state and effects just like Page components 
 // in the 'pages' directory. 
 
-export default function HomePage({ searchParams, recentPosts }) {
+export default function HomePage({ recentPosts }) {
   const [pageIndex, setPageIndex] = useState(1);
+  const postsCount = recentPosts.length;
+  const pageCount = Math.floor((postsCount / 5)) + 1;
 
-  const posts = recentPosts;
-  const postsLength = posts.length;
+  const prevIsEnabled = pageIndex > 1 ? false : true;
+  const nextIsEnabled = pageIndex < pageCount ? false : true;
 
-  const pageNums = postsLength / 5;
-  const nextVisible = postsLength < 5 ? false : true;
-  const nextPage = searchParams.page ? (searchParams.page * 1) + 1 : 2;
-  const prevPage = (searchParams.page * 1) - 1;
-  console.log(nextVisible);
+  const posts = recentPosts.slice((pageIndex-1) * 5, pageIndex * 5);
 
   return (
     <div>
@@ -40,12 +38,19 @@ export default function HomePage({ searchParams, recentPosts }) {
         <br />
         Page {pageIndex} 
         <br />
-        {(pageIndex < 2) ? " ← Previous " : (pageIndex > 1) &&
-        <Link href={`/?page=${pageIndex - 1}`}
-              onClick={() => setPageIndex(pageIndex -1)}>← Previous </Link>}
-        {!nextVisible ? " Next →" : nextVisible &&
-        <Link href={`/?page=${pageIndex + 1}`}
-              onClick={() => setPageIndex(pageIndex + 1)}> Next →</Link>}
+        <button 
+            className={utilStyles.button} 
+            disabled={prevIsEnabled} 
+            onClick={() => setPageIndex(pageIndex - 1)}> 
+          ← Previous 
+        </button>
+        {"  "}  
+        <button 
+            className={utilStyles.button} 
+            disabled={nextIsEnabled} 
+            onClick={() => setPageIndex(pageIndex + 1)}> 
+          Next →
+        </button>
         <br />
         <br />
         <Link href={`/newpost/`} >New Post</Link>

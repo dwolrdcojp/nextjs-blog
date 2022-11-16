@@ -50,3 +50,13 @@
 .lightText {
   color: #666;
 }
+
+.button {
+  background-color: white;
+  border-radius: 4px;
+  width: 125px;
+  color: black;
+  text-align: center;
+  font-size: 16px;
+  padding: 5px 10px;
+}
