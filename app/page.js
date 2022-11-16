@@ -3,6 +3,8 @@ import HomePage from './HomePage';
 import { getPosts } from '../firebase';
 // v9 compat packages are API compatible with v8 code
 
+export const revalidate = 60; // revalidate every 60 seconds
+
 async function getRecentPosts() {
   const recentPosts = await getPosts();
 
