@@ -6,7 +6,7 @@ import { useState } from 'react';
 // This is a client component. It receives data as props and 
 // has access to state and effects just like Page components 
 // in the 'pages' directory. 
-//comment
+//comments
 
 export default function HomePage({ recentPosts }) {
   const [pageIndex, setPageIndex] = useState(1);
