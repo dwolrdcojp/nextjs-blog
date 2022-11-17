@@ -77,6 +77,7 @@ export default function HomePage({ recentPosts }) {
             value={search} 
             onChange={handleChange}></input>
         <br />
+        <br />
         <Link href={`/newpost/`} >New Post</Link>
       </section>
     </div>

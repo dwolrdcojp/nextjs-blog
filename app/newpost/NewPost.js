@@ -1,4 +1,5 @@
 'use client';
+import LoginButton from '../login-btn';
 import { useState } from 'react'; // This is a client component. It receives data as props and 
 import { addPost } from '../../firebase';
 // has access to state and effects just like Page components 
@@ -23,24 +24,26 @@ export default function NewPost() {
 
   return (
     <div>
-      <h1>Add a new post...</h1>
-      Title:
-      <input value={title}
-             onChange={(e) => setTitle(e.target.value)}></input>
-      <br />
-      Content:
-      <textarea style={{whiteSpace: 'pre-wrap'}} value={content}
-             onChange={(e) => setContent(e.target.value)}></textarea>
-      <br />
-      <button onClick={handleClick}>Publish</button>
-      {isPublished && (
-        <h2>New post published!</h2>
-      )}
+      <LoginButton>
+        <h1>Add a new post...</h1>
+        Title:
+        <input value={title}
+               onChange={(e) => setTitle(e.target.value)}></input>
+        <br />
+        Content:
+        <textarea style={{whiteSpace: 'pre-wrap'}} value={content}
+               onChange={(e) => setContent(e.target.value)}></textarea>
+        <br />
+        <button onClick={handleClick}>Publish</button>
+        {isPublished && (
+          <h2>New post published!</h2>
+        )}
 
 
-      <h1> Preview Post: </h1>
-      <h2> {title} </h2>
-      <p> {content} </p>
+        <h1> Preview Post: </h1>
+        <h2> {title} </h2>
+        <p> {content} </p>
+      </LoginButton>
     </div>
   );
 }

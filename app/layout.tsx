@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Providers from './Provider';
 import styles from '../styles/layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import '../styles/global.css';
@@ -25,7 +26,7 @@ export default function RootLayout({ children }) {
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
           </>
         </header>
-        {children}
+          {children}
       </div>
       </body>
     </html>
